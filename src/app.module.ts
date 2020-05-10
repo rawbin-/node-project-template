@@ -7,8 +7,8 @@ import {rabbitmqProvider} from './rabbitmq/rabbitmq.provider';
 import { ClientRMQEx } from './rabbitmq/client-rmq-ex';
 
 @Module({
-  imports: [RabbitmqModule,ClientRMQEx],
+  imports: [RabbitmqModule],
   controllers: [AppController],
-  providers: [AppService, ...rabbitmqProvider],
+  providers: [AppService, ...rabbitmqProvider,ClientRMQEx],
 })
 export class AppModule {}

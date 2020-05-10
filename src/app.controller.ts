@@ -14,11 +14,11 @@ export class AppController {
 
   async onApplicationBootstrap(){
     const client = this.mqClient
-    const connection = await client.connect().catch(error => {
+    await client.connect().catch(error => {
       console.log('mq connection error:',error)
     })
 
-    const channel = await client.createChannel((msg) => {
+    const channel = await client.createChannelEx((msg) => {
         console.log('get message:', msg)
     }).catch(error => {
       console.log('mq consume  error:',error)
